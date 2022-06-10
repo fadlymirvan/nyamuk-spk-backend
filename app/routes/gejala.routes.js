@@ -1,5 +1,5 @@
 module.exports = app => {
-    const gejala = require("../controllers/gejala.controler.js");
+    const gejala = require("../controllers/gejala.controller.js");
     var router = require("express").Router();
 
     // Create a new Gejala

@@ -1,5 +1,5 @@
 module.exports = app => {
-    const bobot = require("../controllers/bobot.controler.js");
+    const bobot = require("../controllers/bobot.controller.js");
     var router = require("express").Router();
 
     // Retrieve all Bobot
