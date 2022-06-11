@@ -60,7 +60,12 @@ exports.signin = (req, res) => {
                     message: "Invalid Password!"
                 });
             }
-            var token = jwt.sign({ id: user.id }, config.secretKey, {
+            var payload = {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+            }
+            var token = jwt.sign({ payload }, config.secretKey, {
                 expiresIn: 86400 // 24 hours
             });
             var authorities = [];
@@ -80,4 +85,21 @@ exports.signin = (req, res) => {
         .catch(err => {
             res.status(500).send({ message: err.message });
         });
+};
+
+exports.getCurrentUser = (req, res) => {
+    var token = req.headers["x-access-token"];
+    var payload = {};
+    jwt.verify(token, config.secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({
+                message: "Unauthorized!",
+            });
+        }
+        console.log(decoded);
+        payload = decoded.payload;
+        payload.accessToken = token;
+    });
+    console.log(payload);
+    return res.status(200).send(payload);
 };
