@@ -22,17 +22,15 @@ const prop = (data) => {
     objData.gejala = data;
     objData.data_length = data.length;
     objData.jenis_nyamuk_length = 3; // N01, N02, N03
-    objData.prob_jenis_nyamuk = {
-        pN01: sumJenisNyamuk(data, "N01"),
-        pN02: sumJenisNyamuk(data, "N02"),
-        pN03: sumJenisNyamuk(data, "N03")
-    }
+    let arrNyamuk = [];
+    arrNyamuk.push(sumJenisNyamuk(data, "N01")/9);
+    arrNyamuk.push(sumJenisNyamuk(data, "N02")/9);
+    arrNyamuk.push(sumJenisNyamuk(data, "N03")/9);
+    objData.prob_jenis_nyamuk = arrNyamuk;
 
     let arrGejala = [];
     for (let i=1; i<=data.length; i++) {
-        let obj = {};
-        obj[data[i-1].dataValues.code] = sumGejala(data[i-1].dataValues);
-        arrGejala.push(obj);
+        arrGejala.push(sumGejala(data[i-1].dataValues));
     }
 
     objData.prob_gejala = arrGejala;
