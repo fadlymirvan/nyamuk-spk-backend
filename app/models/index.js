@@ -6,6 +6,13 @@ const sequelize = new Sequelize(
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
         operatorsAliases: false,
+        // If Using Heroku DB
+        // dialectOptions: {
+        //     ssl: {
+        //         require: true,
+        //         rejectUnauthorized: false
+        //     }
+        // },
         pool: {
             max: dbConfig.pool.max,
             min: dbConfig.pool.min,

@@ -46,6 +46,7 @@ require("./app/routes/gejala.routes.js")(app);
 require("./app/routes/bobot.routes.js")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/home.routes")(app);
 // Set port, listen for request
 app.listen(PORT, () => {
     console.log(`Server is running on port http://localhost:${PORT}/`);
