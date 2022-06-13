@@ -27,13 +27,24 @@ const Role = db.role;
 // Const Variable
 const PORT = process.env.PORT || 8080;
 
-// var corsOptions = {
-//     // origin: "http://localhost:3000"
-//     // origin: "https://nyamuk-frontend.herokuapp.com/"
-// };
+var allowedOrigins = [
+    'http://localhost:3000',
+    'https://nyamuk-frontend.herokuapp.com/',
+    'https://nyamuk-frontend.herokuapp.com'];
+app.use(cors({
+    origin: function(origin, callback){
+        // allow requests with no origin
+        // (like mobile apps or curl requests)
+        if(!origin) return callback(null, true);
+        if(allowedOrigins.indexOf(origin) === -1){
+            var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
-// app.use(cors(corsOptions));
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
