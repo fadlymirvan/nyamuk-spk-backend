@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 8080;
 
 var corsOptions = {
     // origin: "http://localhost:3000"
-    origin: "https://nyamuk-backend.herokuapp.com"
+    origin: "https://nyamuk-frontend.herokuapp.com/"
 };
 
 app.use(cors(corsOptions));
