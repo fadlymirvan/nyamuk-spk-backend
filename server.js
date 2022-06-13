@@ -27,12 +27,13 @@ const Role = db.role;
 // Const Variable
 const PORT = process.env.PORT || 8080;
 
-var corsOptions = {
-    // origin: "http://localhost:3000"
-    origin: "https://nyamuk-frontend.herokuapp.com/"
-};
+// var corsOptions = {
+//     // origin: "http://localhost:3000"
+//     // origin: "https://nyamuk-frontend.herokuapp.com/"
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
