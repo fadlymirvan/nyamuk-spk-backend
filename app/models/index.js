@@ -7,12 +7,12 @@ const sequelize = new Sequelize(
         dialect: dbConfig.dialect,
         operatorsAliases: false,
         // If Using Heroku DB
-        // dialectOptions: {
-        //     ssl: {
-        //         require: true,
-        //         rejectUnauthorized: false
-        //     }
-        // },
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
         pool: {
             max: dbConfig.pool.max,
             min: dbConfig.pool.min,
